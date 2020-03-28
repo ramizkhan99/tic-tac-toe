@@ -49,7 +49,7 @@ def check_horizontal():
     return flag
 
 def check_vertical():
-    flag = True
+    flag = False
     for i in range(n):
         if board[0][i] != '_':
             flag = True
