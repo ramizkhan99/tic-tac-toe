@@ -80,6 +80,18 @@ def check_diagonal():
 def check_board():
     return (check_horizontal() or check_vertical() or check_diagonal())
 
+def check_draw():
+    count = 0
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] == '_':
+                count += 1
+                break
+
+    if count == 0:
+        return True
+    return False
+
 def generate_ai_position():
     return random.choice(available_positions)
 
@@ -106,10 +118,17 @@ def main():
             board[x][y] = char
         else:
             print('Invalid board position(Position occupied)')
-        game_over = check_board()
+        if check_draw():
+            game_over = True
+        else:
+            game_over = check_board()
+            
 
     os.system(clear_call)
-    print('Game over')
+    if check_draw():
+        print('Game Draw!!')
+    else:
+        print(icons[1 - index] + ' has won the game')
     display_board()
 
 
