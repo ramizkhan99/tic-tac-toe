@@ -1,5 +1,6 @@
 import os
 import random
+import time
 
 n = int(input("Enter the side length: "))
 
@@ -118,6 +119,8 @@ def main():
             board[x][y] = char
         else:
             print('Invalid board position(Position occupied)')
+            index = 1 - index
+            time.sleep(2)
         if check_draw():
             game_over = True
         else:
